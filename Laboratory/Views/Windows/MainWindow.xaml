@@ -27,21 +27,33 @@
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <Border Background="#1B1A17"
                 Height="50"
                 VerticalAlignment="Top"
                 Grid.ColumnSpan="2"
                 Grid.Row="0">
-            <TextBlock Text="Лаборатория"
-                       FontSize="30"
-                       HorizontalAlignment="Center"
-                       Foreground="#DFDFDE"
-                       VerticalAlignment="Center"
-                       Style="{StaticResource ResourceKey=InterFont}"/>
         </Border>
 
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   Text="Лаборатория"
+                   FontSize="30"
+                   HorizontalAlignment="Center"
+                   Foreground="#DFDFDE"
+                   VerticalAlignment="Center"
+                   Style="{StaticResource ResourceKey=InterFont}"/>
 
+        <TextBox Grid.Column="0"
+                 Grid.Row="0"
+                 Width="180"
+                 Height="30"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 FontSize="18"
+                 Margin="2"
+                 Style="{StaticResource CustomTextBox}">
+        </TextBox>
 
         <Border Grid.Column="0"
                 Grid.Row="1">
