@@ -3,10 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Laboratory.ViewModels"
         xmlns:local="clr-namespace:Laboratory"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="600"
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="InterFont">
+            <Setter Property="TextElement.FontFamily"
+                    Value="/Resources/Fonts/#Inter"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -27,7 +37,8 @@
                        FontSize="30"
                        HorizontalAlignment="Center"
                        Foreground="#DFDFDE"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center"
+                       Style="{StaticResource ResourceKey=InterFont}"/>
         </Border>
 
 
@@ -36,21 +47,112 @@
                 Grid.Row="1">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#7882A4" Offset="0.1"/>
-                    <GradientStop Color="#1C658C" Offset="1"/>
+                    <GradientStop Color="#4D4C7D" Offset="0.1"/>
+                    <GradientStop Color="#363062" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
-            <!--<ListBox Background="Transparent"                            
+            <ListBox Background="Transparent"                            
                          BorderThickness="0"
                          HorizontalContentAlignment="Stretch"
                          Padding="0,0,5,0"        
                          ScrollViewer.CanContentScroll="False"
-                         ItemsSource="{Binding CarRegister}"
-                         SelectedItem="{Binding SelectedCar}"
-                         >
-                --><!--ItemContainerStyle="{StaticResource ListBoxItemStyle}"--><!--
-            </ListBox>-->
+                         ItemsSource="{Binding Employees}"                    
+                         SelectedItem="{Binding SelectedEmployee}"
+                         ItemContainerStyle="{StaticResource EmployeeCard}"
+                         Style="{StaticResource ResourceKey=InterFont}">
+             
+            </ListBox>
         </Border>
+        
+        <GroupBox Grid.Row="1"
+                  Grid.Column="1"
+                  Style="{StaticResource ResourceKey=InterFont}"> 
+            
+            <StackPanel TextBlock.FontSize="16"
+                        Margin="20,10,20,10">
+                <DockPanel>
+                    <TextBlock Text="Фамилия"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.Surname}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Имя"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.Name}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Отчество"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.Patronymic}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Пол"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.Gender}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Возраст"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.Age}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Семейное положение"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.MaritalStatus}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Наличие детей"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.HavingChildren}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Должность"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.Post}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+                <DockPanel>
+                    <TextBlock Text="Ученая степень"
+                               DockPanel.Dock="Left"
+                               TextAlignment="Left"/>
+                    <TextBlock Text="{Binding SelectedEmployee.Degree}"
+                               DockPanel.Dock="Right"
+                               TextAlignment="Right"/>
+                </DockPanel>
+                <Separator Background="#D9D9DB" Margin="0,0,0,10"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>

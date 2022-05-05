@@ -4,9 +4,15 @@
              xmlns:local="clr-namespace:Laboratory"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Window">
+        <!--<Style TargetType="Window">
             <Setter Property="TextElement.FontFamily"
                     Value="/Resources/Fonts/#Inter"/>
-        </Style>
+        </Style>-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/EmployeeCard.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
+    
 </Application>

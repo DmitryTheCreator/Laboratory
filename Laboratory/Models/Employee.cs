@@ -8,13 +8,13 @@
 
         public string Patronymic { get; set; }
 
-        public bool Gender { get; set; }
+        public string Gender { get; set; }
 
         public int Age { get; set; }
 
         public string MaritalStatus { get; set; }
 
-        public bool HavingChildren { get; set; }
+        public string HavingChildren { get; set; }
 
         public string Post { get; set; }
 
