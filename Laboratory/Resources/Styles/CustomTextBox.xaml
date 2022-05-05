@@ -12,7 +12,7 @@
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="10,0,0,0"
-                                     Text="{Binding CarsFilterText,
+                                     Text="{Binding EmployeesFilterText,
                                             UpdateSourceTrigger=PropertyChanged}"                                    
                                      BorderThickness="0"
                                      Background="Transparent"

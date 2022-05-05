@@ -27,6 +27,48 @@ namespace Laboratory.ViewModels
 
         #endregion
 
+        #region EmployeesFilterText : string - Текст фильтра сотрудников
+
+        private string _EmployeesFilterText;
+
+        /// <summary>Текст фильтра сотрудников</summary>
+        public string EmployeesFilterText
+        {
+            get => _EmployeesFilterText;
+            set
+            {
+                if (!Set(ref _EmployeesFilterText, value)) return;
+                _Employees.View.Refresh();
+            }
+        }
+
+        #endregion
+
+        private void OnEmployeesFiltered(object sender, FilterEventArgs e)
+        {
+            if (!(e.Item is Employee employee))
+            {
+                e.Accepted = false;
+                return;
+            }
+
+            var filter_text = _EmployeesFilterText;
+            if (string.IsNullOrWhiteSpace(filter_text)) return;
+
+            if (employee.Surname is null || employee.Name is null)
+            {
+                e.Accepted = false;
+                return;
+            }
+
+            if (employee.Surname.Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
+            if (employee.Name.Contains(filter_text, StringComparison.OrdinalIgnoreCase)) return;
+            if (employee.Surname.Contains(filter_text.Split(' ')[0], StringComparison.OrdinalIgnoreCase) &&
+                employee.Name.Contains(filter_text.Split(' ')[1], StringComparison.OrdinalIgnoreCase))
+                return;
+
+            e.Accepted = false;
+        }
         public MainWindowViewModel()
         {
             var employees = new List<Employee>();
@@ -91,7 +133,8 @@ namespace Laboratory.ViewModels
             employees.Add(employee);
 
             _Employees.Source = employees;
-            SelectedEmployee = employees.First();          
+            SelectedEmployee = employees.First();
+            _Employees.Filter += OnEmployeesFiltered;
         }
     }
 }
