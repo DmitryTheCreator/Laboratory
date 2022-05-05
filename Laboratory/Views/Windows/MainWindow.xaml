@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laboratory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Border Background="#1B1A17"
+                Height="50"
+                VerticalAlignment="Top"
+                Grid.ColumnSpan="2"
+                Grid.Row="0">
+            <TextBlock Text="Лаборатория"
+                       FontSize="30"
+                       HorizontalAlignment="Center"
+                       Foreground="#DFDFDE"
+                       VerticalAlignment="Center"/>
+        </Border>
+
+
+
+        <Border Grid.Column="0"
+                Grid.Row="1">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#7882A4" Offset="0.1"/>
+                    <GradientStop Color="#1C658C" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <!--<ListBox Background="Transparent"                            
+                         BorderThickness="0"
+                         HorizontalContentAlignment="Stretch"
+                         Padding="0,0,5,0"        
+                         ScrollViewer.CanContentScroll="False"
+                         ItemsSource="{Binding CarRegister}"
+                         SelectedItem="{Binding SelectedCar}"
+                         >
+                --><!--ItemContainerStyle="{StaticResource ListBoxItemStyle}"--><!--
+            </ListBox>-->
+        </Border>
     </Grid>
 </Window>
